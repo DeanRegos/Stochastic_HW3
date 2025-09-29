@@ -1,1 +1,114 @@
+import random
 
+aa = "Acrophobia"
+gg = "Gravity Gripper"
+pp = "Perilous Plummet"
+vv = "Velocity Vexation"
+state = aa
+prob = 0
+count = 0
+
+numaa = 0
+numgg = 0
+numpp = 0
+numvv = 0
+
+
+calculation = int(input('\nWould you like to run the chain a certain amount of times? (Enter "1") or run until it reaches "Gravity Gripper" or "Velocity Vexation"? (Enter "2"): '))
+
+
+if calculation == 1:
+
+    numstates = int(input("Enter the number of roller coasters you will be riding today: "))
+
+    while count < numstates:
+        if state == aa:
+            numaa += 1
+            count += 1
+
+            prob = random.randint(1, 10)
+            if prob <= 6:
+                state = gg
+                # print("aa -> gg")
+            else:
+                state = pp
+                # print("aa -> pp")
+
+        elif state == gg:
+            numgg += 1
+            count += 1
+
+            prob = random.randint(1, 10)
+            if prob <= 9:
+                state = aa
+                # print("gg -> aa")
+            else:
+                state = gg
+                # print("gg -> gg")
+
+        elif state == pp:
+            numpp += 1
+            count += 1
+
+            prob = random.randint(1, 10)
+            if prob <= 8:
+                state = aa
+                # print("pp -> aa")
+            else:
+                state = vv
+                # print("pp -> vv")
+
+        else:
+            numvv += 1
+            count += 1
+
+            state = aa
+            # print("vv -> aa")
+
+    print(count, "/", numstates, "Completed.")
+    print("Number of rides on each rollercoaster:")
+    print("Acrophobia:       ", numaa)
+    print("Gravity Gripper:  ", numgg)
+    print("Perilous Plummet: ", numpp)
+    print("Velocity Vexation:", numvv)
+
+if calculation == 2:
+
+    numstates = int(input("Enter the number of times you wish to repeat this process: "))
+
+    while count < numstates:
+
+        while ((state != gg) and (state != vv)):
+            if state == aa:
+                prob = random.randint(1, 10)
+                if prob <= 6:
+                    # print("aa -> gg")
+                    numgg += 1
+                    state = gg
+                else:
+                    # print("aa -> pp")
+                    state = pp
+            
+            elif state == pp:
+                prob = random.randint(1, 10)
+                if prob <= 8:
+                    # print("pp -> aa")
+                    state = aa
+                else:
+                    # print("pp -> vv")
+                    numvv += 1
+                    state = vv
+
+            elif state == gg:
+                numgg += 1
+
+            else:
+                numvv += 1
+        count += 1
+        # print(count)
+        state = aa
+        
+    print(count, "/", numstates)
+    print("Number of times 1 ride was riden before the other:")
+    print("Gravity Gripper:", numgg)
+    print("Velocity Vexation:", numvv)
