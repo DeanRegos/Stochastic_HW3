@@ -110,5 +110,5 @@ if calculation == 2:
         
     print(count, "/", numstates)
     print("Number of times 1 ride was riden before the other:")
-    print("Gravity Gripper:", numgg)
+    print("Gravity Gripper:  ", numgg)
     print("Velocity Vexation:", numvv)
